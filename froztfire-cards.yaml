@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: froztfire-cards
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: froztfire-cards
+  template:
+    metadata:
+      labels:
+        app: froztfire-cards
+    spec:
+      containers:
+      - name: froztfire-cards
+        image: froztfire/cards:cards-v1
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9000

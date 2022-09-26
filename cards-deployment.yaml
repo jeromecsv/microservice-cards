@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cards-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cards-deployment
+  template:
+    metadata:
+      labels:
+        app: cards-deployment
+    spec:
+      containers:
+      - name: cards-deployment
+        image: cards:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9000
